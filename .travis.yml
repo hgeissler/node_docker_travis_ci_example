@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t ci/node .
     - docker images ci/node
+
+before_deploy:
+    - docker login -u hgeissler -p dotsohs12
+    
+deploy:
+    provider: script
+    script: docker push ci/node
+    on:
+        branch: master
