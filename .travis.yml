@@ -7,7 +7,7 @@ script:
     - docker images hgeissler/ci_node
 
 before_deploy:
-    - docker login -u hgeissler -password-stdin
+    - docker login -u hgeissler -p "$DOCKER_PASSWORD"
     
 deploy:
     provider: script
