@@ -3,14 +3,14 @@ services:
     - docker
 
 script:
-    - docker build -t ci/node .
-    - docker images ci/node
+    - docker build -t hgeissler/ci_node .
+    - docker images hgeissler/ci_node
 
 before_deploy:
-    - docker login -u hgeissler -p dotsohs12
+    - docker login -u hgeissler -password-stdin
     
 deploy:
     provider: script
-    script: docker push ci/node
+    script: docker push hgeissler/ci_node
     on:
         branch: master
